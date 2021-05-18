@@ -1,0 +1,1 @@
+cmd_Release/node-rank-fns-native.node := c++ -bundle -undefined dynamic_lookup -Wl,-no_pie -Wl,-search_paths_first -mmacosx-version-min=10.7 -arch x86_64 -L./Release -stdlib=libc++  -o Release/node-rank-fns-native.node Release/obj.target/node-rank-fns-native/src/node_rank_fns.o Release/nothing.a 
