@@ -8,8 +8,5 @@ class NodeRankFns {
     greet(strName) {
         return this._addonInstance.greet(strName);
     }
-    rand(arr) {
-        return this._addonInstance.rand(arr);
-    }
 }
 module.exports = NodeRankFns;
