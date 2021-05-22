@@ -1,4 +1,4 @@
-const addon = require('../build/Release/node-rank-fns-native');
+const addon = require('../build/Release/node-rank-fns');
 
 interface INodeRankFnsNative
 {

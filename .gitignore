@@ -2,3 +2,4 @@ node_modules/
 .idea/
 build/
 cmake-build-debug/
+prebuilds/
