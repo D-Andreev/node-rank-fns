@@ -1,7 +1,7 @@
 {
   'targets': [
     {
-      'target_name': 'node-rank-fns-native',
+      'target_name': 'node-rank-fns',
       'sources': [ 'src/node_rank_fns.cc' ],
       'include_dirs': ["<!@(node -p \"require('node-addon-api').include\")"],
       'dependencies': ["<!(node -p \"require('node-addon-api').gyp\")"],

@@ -1,5 +1,5 @@
 "use strict";
-const addon = require('../build/Release/node-rank-fns-native');
+const addon = require('../build/Release/node-rank-fns');
 ;
 class NodeRankFns {
     constructor(name) {
@@ -7,9 +7,6 @@ class NodeRankFns {
     }
     greet(strName) {
         return this._addonInstance.greet(strName);
-    }
-    rand(arr) {
-        return this._addonInstance.rand(arr);
     }
 }
 module.exports = NodeRankFns;

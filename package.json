@@ -1,21 +1,32 @@
 {
     "main": "lib/binding.js",
-    "dependencies": {
-        "node-addon-api": "^1.1.0"
+    "name": "node-rank-fns",
+    "version": "1.0.0",
+    "binary": {
+        "napi_versions": [
+            3
+        ]
     },
     "scripts": {
-        "build": "node-gyp rebuild",
+        "install": "prebuild-install --runtime napi || cmake-js build",
+        "rebuild": "cmake-js build",
+        "prebuild": "prebuild --runtime napi --all --strip --verbose",
+        "upload": "prebuild --runtime napi --upload ${GITHUB_TOKEN}",
         "pretest": "tsc",
         "test": "node --napi-modules ./test/test_binding.js"
     },
-    "gypfile": true,
-    "name": "node-rank-fns",
-    "version": "1.0.0",
-    "author": "",
+    "author": "Dimitar Andreev",
     "license": "ISC",
-    "description": "",
+    "description": "Nodejs addon with ranking functions",
+    "dependencies": {
+        "bindings": "^1.5.0",
+        "node-addon-api": "^3.2.0",
+        "prebuild-install": "^6.1.2"
+    },
     "devDependencies": {
         "@types/node": "^7.0.22",
+        "cmake-js": "^6.1.0",
         "typescript": "^3.9.7"
-    }
+    },
+    "repository": "https://github.com/D-Andreev/node-rank-fns.git"
 }
