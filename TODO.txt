@@ -1,1 +1,7 @@
-see why syntax highlight is off cmake node-addon-api version
+1. Parse input
+  - array of strings values? (this for now)
+  - array of file paths, read files
+
+2. Set TF for each document (each document has the sum of TFs for each of the terms in the query)
+
+3. Implement BM25

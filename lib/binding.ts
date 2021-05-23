@@ -1,17 +1,16 @@
 const addon = require('../build/Release/node-rank-fns');
 
-interface INodeRankFnsNative
-{
-    greet(strName: string): string;
-};
+interface INodeRankFnsNative {
+    tfIdf(documents: string[], terms: string[]): string[];
+}
 
 class NodeRankFns {
-    constructor(name: string) {
-        this._addonInstance = new addon.NodeRankFns(name)
+    constructor() {
+        this._addonInstance = new addon.NodeRankFns();
     }
 
-    greet (strName: string) {
-        return this._addonInstance.greet(strName);
+    tfIdf(documents: string[], terms: string[]): string[] {
+        return this._addonInstance.tfIdf(documents, terms);
     }
 
     // private members
