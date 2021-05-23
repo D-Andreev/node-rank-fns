@@ -1,51 +1,62 @@
 #include "node_rank_fns.h"
-
-using namespace Napi;
+#include <iostream>
+#include "vector"
+#include "string"
 
 NodeRankFns::NodeRankFns(const Napi::CallbackInfo& info) : ObjectWrap(info) {
     Napi::Env env = info.Env();
-
-    if (info.Length() < 1) {
-        Napi::TypeError::New(env, "Wrong number of arguments")
-          .ThrowAsJavaScriptException();
-        return;
-    }
-
-    if (!info[0].IsString()) {
-        Napi::TypeError::New(env, "You need to name yourself")
-          .ThrowAsJavaScriptException();
-        return;
-    }
-
-    this->_greeterName = info[0].As<Napi::String>().Utf8Value();
 }
 
-Napi::Value NodeRankFns::Greet(const Napi::CallbackInfo& info) {
+std::vector<std::string> NodeRankFns::NapiArrayToVector(Napi::Array arr) {
+    std::vector<std::string> v;
+    for (auto i = 0; i < arr.Length(); i++) {
+        v.emplace_back(static_cast<Napi::Value>(arr[i]).ToString().Utf8Value());
+    }
+
+    return v;
+}
+
+Napi::Array NodeRankFns::VectorToNapiArray(Napi::Env env, std::vector<std::string> v) {
+    Napi::Array result = Napi::Array::New(env);
+
+    for (auto i = 0; i < v.size(); i++) {
+        result[i] = v[i];
+    }
+
+    return result;
+}
+
+Napi::Value NodeRankFns::TfIdf(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
 
-    if (info.Length() < 1) {
+    if (info.Length() < 2) {
         Napi::TypeError::New(env, "Wrong number of arguments")
-          .ThrowAsJavaScriptException();
+                .ThrowAsJavaScriptException();
         return env.Null();
     }
 
-    if (!info[0].IsString()) {
-        Napi::TypeError::New(env, "You need to introduce yourself to greet")
-          .ThrowAsJavaScriptException();
+    if (!info[0].IsArray()) {
+        Napi::TypeError::New(env, "Documents array is not valid")
+                .ThrowAsJavaScriptException();
         return env.Null();
     }
 
-    Napi::String name = info[0].As<Napi::String>();
+    if (!info[1].IsArray()) {
+        Napi::TypeError::New(env, "Terms array is not valid")
+                .ThrowAsJavaScriptException();
+        return env.Null();
+    }
 
-    printf("Hello %s\n", name.Utf8Value().c_str());
-    printf("I am %s\n", this->_greeterName.c_str());
+    auto docs = this->NapiArrayToVector(info[0].As<Napi::Array>());
+    auto terms = this->NapiArrayToVector(info[1].As<Napi::Array>());
+    auto result = this->VectorToNapiArray(env, docs);
 
-    return Napi::String::New(env, this->_greeterName);
+    return reinterpret_cast<Napi::Value &&>(result);
 }
 
 Napi::Function NodeRankFns::GetClass(Napi::Env env) {
     return DefineClass(env, "NodeRankFns", {
-        NodeRankFns::InstanceMethod("greet", &NodeRankFns::Greet),
+        NodeRankFns::InstanceMethod("tfIdf", &NodeRankFns::TfIdf),
     });
 }
 

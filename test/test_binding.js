@@ -1,21 +1,15 @@
-const NodeRankFns = require("../dist/binding.js");
-const assert = require("assert");
+const NodeRankFns = require('../dist/binding.js');
+const assert = require('assert');
 
-assert(NodeRankFns, "The expected module is undefined");
+function testBasic() {
+    const documents = ['100', '200', '300'];
+    const terms = ['1'];
 
-function testBasic()
-{
-    const instance = new NodeRankFns("mr-yeoman");
-    assert(instance.greet, "The expected method is not defined");
-    assert.strictEqual(instance.greet("kermit"), "mr-yeoman", "Unexpected value returned");
-}
-
-function testInvalidParams()
-{
     const instance = new NodeRankFns();
+    const res = instance.tfIdf(documents, terms);
+    assert.deepEqual(res, documents);
 }
 
-assert.doesNotThrow(testBasic, undefined, "testBasic threw an expection");
-assert.throws(testInvalidParams, undefined, "testInvalidParams didn't throw");
+assert.doesNotThrow(testBasic, undefined, 'testBasic threw an exception');
 
-console.log("Tests passed- everything looks OK!");
+console.log('Tests passed- everything looks OK!');
