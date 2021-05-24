@@ -7,6 +7,7 @@
 3. Implement BM25
 
 4. Make functions async
+  - Rename to rex
   - extract tfidf and bm25 into a separate class
   - Move k and b as parameters of addon constructor
   - rename existing fns to fnNameSync
