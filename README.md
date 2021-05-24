@@ -14,18 +14,33 @@ Input files:
     const NodeRankFns = require('node-rank-fns');
     const assert = require('assert');
 
-    function testBasic() {
+    function testTfIdf() {
         const instance = new NodeRankFns();
         const res = instance.tfIdf('./documents.txt', './terms.txt');
         assert.deepEqual(res, [0, 0.12901285528456335]);
     }
 
-    assert.doesNotThrow(testBasic, undefined, 'testBasic threw an exception');
+    assert.doesNotThrow(testBasic, undefined, 'testTfIdf threw an exception');
 ```
 Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 #### 2. BM25 [Wiki](https://en.wikipedia.org/wiki/Okapi_BM25)
+Input files:
+[documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
+[terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
+```js
+    const NodeRankFns = require('node-rank-fns');
+    const assert = require('assert');
 
+    function testBM25() {
+        const instance = new NodeRankFns();
+        const res = instance.bm25('./documents.txt', './terms.txt');
+        assert.deepEqual(res, [0, 0.07811157572119272]);
+    }
+
+    assert.doesNotThrow(testBasic, undefined, 'testBM25 threw an exception');
+```
+Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 ## Benchmarks
 `npm run benchmarks`

@@ -7,9 +7,9 @@ class NodeRankFns : public Napi::ObjectWrap<NodeRankFns>
 {
 public:
     NodeRankFns(const Napi::CallbackInfo&);
-    Napi::Value TfIdf(const Napi::CallbackInfo&);
-
     static Napi::Function GetClass(Napi::Env);
+    Napi::Value TfIdf(const Napi::CallbackInfo&);
+    Napi::Value BM25(const Napi::CallbackInfo &info);
 
 private:
     static std::vector<std::string> NapiArrayToVector(Napi::Array arr);
@@ -23,4 +23,5 @@ private:
             std::vector<std::string> &document,
             std::vector<std::string> &terms);
     std::vector<double> GetTfIdf(std::vector<std::string> &documents, std::vector<std::string> &terms);
+    std::vector<double> GetBM25(std::vector<std::string> &documents, std::vector<std::string> &terms);
 };

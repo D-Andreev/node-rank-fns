@@ -21,7 +21,7 @@ const run = bench([
     function nativeAddon(done) {
         instance.tfIdf(documentsFilePath, termsFilePath);
         done();
-    }
+    },
 ], 1000);
 
 run(run);

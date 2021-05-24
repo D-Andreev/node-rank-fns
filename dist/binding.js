@@ -7,5 +7,8 @@ class NodeRankFns {
     tfIdf(documents, terms) {
         return this._addonInstance.tfIdf(documents, terms);
     }
+    bm25(documents, terms) {
+        return this._addonInstance.bm25(documents, terms);
+    }
 }
 module.exports = NodeRankFns;

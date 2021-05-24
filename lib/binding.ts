@@ -2,6 +2,7 @@ const addon = require('../build/Release/node-rank-fns');
 
 interface INodeRankFnsNative {
     tfIdf(documents: string[], terms: string[]): string[];
+    bm25(documents: string[], terms: string[]): string[];
 }
 
 class NodeRankFns {
@@ -11,6 +12,10 @@ class NodeRankFns {
 
     tfIdf(documents: string[], terms: string[]): string[] {
         return this._addonInstance.tfIdf(documents, terms);
+    }
+
+    bm25(documents: string[], terms: string[]): string[] {
+        return this._addonInstance.bm25(documents, terms);
     }
 
     // private members
