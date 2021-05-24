@@ -25,6 +25,6 @@
 
     assert.doesNotThrow(testBasic, undefined, 'testBasic threw an exception');
 ```
-Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/test_binding.js)
+Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 ####2. BM25 [Wiki](https://en.wikipedia.org/wiki/Okapi_BM25)
