@@ -24,7 +24,7 @@ Input files:
 ```
 Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
-#### 2. BM25 [Wiki](https://en.wikipedia.org/wiki/Okapi_BM25)
+#### 2. BM25 ([Wiki](https://en.wikipedia.org/wiki/Okapi_BM25))
 Input files:
 [documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
 [terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
