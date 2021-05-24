@@ -16,4 +16,4 @@ function testBasic() {
 
 assert.doesNotThrow(testBasic, undefined, 'testBasic threw an exception');
 
-console.log('Tests passed- everything looks OK!');
+console.log('Tests passed - everything looks OK!');

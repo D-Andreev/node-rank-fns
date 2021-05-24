@@ -4,8 +4,6 @@
 #include "string"
 #include "map"
 #include <cmath>
-#include <iomanip>
-#include <utility>
 
 template<typename T>
 struct tfIdfScore : public std::vector<T> {};
