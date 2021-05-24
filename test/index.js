@@ -1,7 +1,7 @@
 const NodeRankFns = require('../dist/binding.js');
 const assert = require('assert');
 
-function testBasic() {
+function testTfIdf() {
     const documents = [
         'this is a a sample',
         'this is another another example example example',
@@ -14,6 +14,6 @@ function testBasic() {
     assert.deepEqual(res, [0, 0.12901285528456335]);
 }
 
-assert.doesNotThrow(testBasic, undefined, 'testBasic threw an exception');
+assert.doesNotThrow(testTfIdf, undefined, 'testBasic threw an exception');
 
 console.log('Tests passed - everything looks OK!');
