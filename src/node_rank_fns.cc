@@ -3,7 +3,7 @@
 #include "vector"
 #include "string"
 #include "map"
-#include <cmath>
+#include <math.h>
 
 NodeRankFns::NodeRankFns(const Napi::CallbackInfo& info) : ObjectWrap(info) {
     Napi::Env env = info.Env();
