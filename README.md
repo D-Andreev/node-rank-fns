@@ -25,3 +25,14 @@ Input files:
 Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 ####2. BM25 [Wiki](https://en.wikipedia.org/wiki/Okapi_BM25)
+
+
+## Benchmarks
+`npm run benchmarks`
+
+| Implementation   | Execution time   |
+| ---------------- | ---------------- |
+| vanillaJS*1000   | 5.063s           |
+| nativeAddon*1000 | <b>767.641ms</b> |
+| vanillaJS*1000   | 5.069s           |
+| nativeAddon*1000 | <b>738.792ms</b> |
