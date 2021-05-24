@@ -57,7 +57,7 @@ Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/i
 ## Benchmarks
 `npm run benchmarks`
 
-| Implementation   | Execution time   |
+| TF-IDF           | Execution time   |
 | ---------------- | ---------------- |
 | vanillaJS*1000   | 5.063s           |
 | nativeAddon*1000 | <b>767.641ms</b> |
