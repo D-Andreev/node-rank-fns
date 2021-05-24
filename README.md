@@ -65,15 +65,15 @@ Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/i
 | nativeAddon*1000 | <b>738.792ms</b> |
 
 <a name="Contributing"></a>
-### Contributing
+## Contributing
 Pull requests are welcome.
 
 <a name="Changelog"></a>
-### Changelog
+## Changelog
 For complete changelog [click here](https://github.com/D-Andreev/node-rank-fns/blob/master/CHANGELOG.md).
 
 <a name="License"></a>
-### License
+## License
 MIT License
 
 Copyright (c) 2021 Dimitar Andreev
