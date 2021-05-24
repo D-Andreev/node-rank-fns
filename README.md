@@ -1,15 +1,12 @@
-
-# ![Rex](https://github.com/D-Andreev/node-rank-fns/blob/master/rex.png?raw=true) Rex
+# node-rank-fns
 <i>A native node addon with implementations of ranking functions.</i>
-
----
 
  * **[Install](#Install)**
  * **[TF-IDF](#TF-IDF)**
  * **[BM25](#BM25)**
  * **[Benchmarks](#Benchmarks)**
- * **[Contributing](#Contributing)**
  * **[Changelog](#Changelog)**
+ * **[Contributing](#Contributing)**
  * **[License](#License)**
 
 <a name="Install"></a>
@@ -23,8 +20,6 @@
 Input files:
 [documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
 [terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
-
-Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 ```js
     const NodeRankFns = require('node-rank-fns');
     const assert = require('assert');
@@ -37,14 +32,13 @@ Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/i
 
     assert.doesNotThrow(testBasic, undefined, 'testTfIdf threw an exception');
 ```
+Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 <a name="BM25"></a>
 #### 2. BM25 ([Wiki](https://en.wikipedia.org/wiki/Okapi_BM25))
 Input files:
 [documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
 [terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
-
-Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 ```js
     const NodeRankFns = require('node-rank-fns');
     const assert = require('assert');
@@ -57,12 +51,13 @@ Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/i
 
     assert.doesNotThrow(testBM25, undefined, 'testBM25 threw an exception');
 ```
+Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 <a name="Benchmarks"></a>
 ## Benchmarks
 `npm run benchmarks`
 
-| TF-IDF           | Execution time   |
+| Implementation   | Execution time   |
 | ---------------- | ---------------- |
 | vanillaJS*1000   | 5.063s           |
 | nativeAddon*1000 | <b>767.641ms</b> |
@@ -70,15 +65,15 @@ Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/i
 | nativeAddon*1000 | <b>738.792ms</b> |
 
 <a name="Contributing"></a>
-## Contributing
+### Contributing
 Pull requests are welcome.
 
 <a name="Changelog"></a>
-## Changelog
+### Changelog
 For complete changelog [click here](https://github.com/D-Andreev/node-rank-fns/blob/master/CHANGELOG.md).
 
 <a name="License"></a>
-## License
+### License
 MIT License
 
 Copyright (c) 2021 Dimitar Andreev
