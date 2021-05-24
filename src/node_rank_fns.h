@@ -12,7 +12,7 @@ public:
     static Napi::Function GetClass(Napi::Env);
 
 private:
-    std::vector<std::string> NapiArrayToVector(Napi::Array arr);
+    static std::vector<std::string> NapiArrayToVector(Napi::Array arr);
     static Napi::Array VectorToNapiArray(Napi::Env env, const std::vector<double>& vec);
     static std::vector<std::string> SplitString(const std::string& str);
     static double GetTermFrequency(

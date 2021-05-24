@@ -5,9 +5,6 @@
 #include "map"
 #include <cmath>
 
-template<typename T>
-struct tfIdfScore : public std::vector<T> {};
-
 NodeRankFns::NodeRankFns(const Napi::CallbackInfo& info) : ObjectWrap(info) {
     Napi::Env env = info.Env();
 }
