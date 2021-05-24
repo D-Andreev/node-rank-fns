@@ -1,7 +1,7 @@
 # node-rank-fns
 <i>A native node addon with implementations of ranking functions.</i>
 
- * **[Installation](#Installation)**
+ * **[Install](#Install)**
  * **[TF-IDF](#TF-IDF)**
  * **[BM25](#BM25)**
  * **[Benchmarks](#Benchmarks)**
@@ -9,6 +9,7 @@
  * **[Contributing](#Contributing)**
  * **[License](#License)**
 
+<a name="Install"></a>
 ## Install 
 - `npm i node-rank-fns`
 
