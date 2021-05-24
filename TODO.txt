@@ -5,3 +5,9 @@
 2. Set TF for each document (each document has the sum of TFs for each of the terms in the query)
 
 3. Implement BM25
+
+4. Make functions async
+  - extract tfidf and bm25 into a separate class
+  - Move k and b as parameters of addon constructor
+  - rename existing fns to fnNameSync
+  - create async workers for async methods
