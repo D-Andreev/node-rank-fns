@@ -5,8 +5,8 @@
  * **[TF-IDF](#TF-IDF)**
  * **[BM25](#BM25)**
  * **[Benchmarks](#Benchmarks)**
- * **[Changelog](#Changelog)**
  * **[Contributing](#Contributing)**
+ * **[Changelog](#Changelog)**
  * **[License](#License)**
 
 <a name="Install"></a>
