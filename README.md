@@ -6,7 +6,7 @@
 
 ## Examples 
 
-####1. TF-IDF ([Wiki](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Example_of_tf%E2%80%93idf))
+#### 1. TF-IDF ([Wiki](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Example_of_tf%E2%80%93idf))
 Input files:
 [documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
 [terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
@@ -24,7 +24,7 @@ Input files:
 ```
 Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
-####2. BM25 [Wiki](https://en.wikipedia.org/wiki/Okapi_BM25)
+#### 2. BM25 [Wiki](https://en.wikipedia.org/wiki/Okapi_BM25)
 
 
 ## Benchmarks
