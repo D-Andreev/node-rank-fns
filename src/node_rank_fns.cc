@@ -4,6 +4,8 @@
 #include "string"
 #include "map"
 #include <math.h>
+#include <fstream>
+#include <sstream>
 
 NodeRankFns::NodeRankFns(const Napi::CallbackInfo& info) : ObjectWrap(info) {
     Napi::Env env = info.Env();
@@ -60,6 +62,19 @@ double NodeRankFns::GetTermFrequency(std::vector<std::string> &document, std::ve
     return tfSum;
 }
 
+std::vector<std::string> NodeRankFns::ParseInputFile(const std::string &filePath) {
+    std::vector<std::string> result;
+
+    std::ifstream file(filePath);
+    if (!file.good()) return result;
+    std::string str;
+    while (getline(file, str)) {
+        result.push_back(str);
+    }
+
+    return result;
+}
+
 double NodeRankFns::GetDocumentFrequency(std::vector<std::string> &docs, std::vector<std::string> &terms) {
     double df = 0;
     for (auto & doc : docs) {
@@ -82,23 +97,26 @@ double NodeRankFns::GetDocumentFrequency(std::vector<std::string> &docs, std::ve
     return df;
 }
 
-std::vector<double> NodeRankFns::GetTfIdf(Napi::Array documentsInput, Napi::Array termsInput) {
-    auto docs = this->NapiArrayToVector(documentsInput);
-    auto terms = this->NapiArrayToVector(termsInput);
-
-    double df = this->GetDocumentFrequency(docs, terms);
+std::vector<double> NodeRankFns::GetTfIdf(std::vector<std::string> &documents, std::vector<std::string> &terms) {
+    double df = this->GetDocumentFrequency(documents, terms);
     std::vector<double> scores;
-    for (auto i = 0; i < docs.size(); i++) {
-        auto doc = docs[i];
+    for (auto i = 0; i < documents.size(); i++) {
+        auto doc = documents[i];
         auto words = this->SplitString(doc);
         double tf = this->GetTermFrequency(words, terms);
-        double idf = log10((double)docs.size() / df);
+        double idf = log10((double)documents.size() / df);
         scores.push_back(abs(tf * idf));
     }
 
     return scores;
 }
 
+/**
+ * Get TF-IDF scores
+ * @param info [documents file path, terms file path]
+ * @returns tf-idf score for each of the documents
+ * @example nodeRankFns.tfIdf('./documents/file/path.txt', './terms/file/path.txt')
+ */
 Napi::Value NodeRankFns::TfIdf(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
     if (info.Length() < 2) {
@@ -106,18 +124,21 @@ Napi::Value NodeRankFns::TfIdf(const Napi::CallbackInfo& info) {
                 .ThrowAsJavaScriptException();
         return env.Null();
     }
-    if (!info[0].IsArray()) {
-        Napi::TypeError::New(env, "Documents array is not valid")
+    if (!info[0].IsString()) {
+        Napi::TypeError::New(env, "Documents file path is not valid")
                 .ThrowAsJavaScriptException();
         return env.Null();
     }
-    if (!info[1].IsArray()) {
-        Napi::TypeError::New(env, "Terms array is not valid")
+    if (!info[1].IsString()) {
+        Napi::TypeError::New(env, "Terms file path is not valid")
                 .ThrowAsJavaScriptException();
         return env.Null();
     }
 
-    auto scores = this->GetTfIdf(info[0].As<Napi::Array>(), info[1].As<Napi::Array>());
+    std::vector<std::string> documents = this->ParseInputFile(info[0].As<Napi::String>().Utf8Value());
+    std::vector<std::string> terms = this->ParseInputFile(info[1].As<Napi::String>().Utf8Value());
+
+    auto scores = this->GetTfIdf(documents, terms);
     auto result = this->VectorToNapiArray(env, scores);
 
     return reinterpret_cast<Napi::Value &&>(result);

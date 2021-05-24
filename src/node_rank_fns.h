@@ -18,8 +18,9 @@ private:
     static double GetTermFrequency(
             std::vector<std::string> &docs,
             std::vector<std::string> &terms);
+    static std::vector<std::string> ParseInputFile(const std::string &documentFilePath);
     double GetDocumentFrequency(
             std::vector<std::string> &document,
             std::vector<std::string> &terms);
-    std::vector<double> GetTfIdf(Napi::Array documentsInput, Napi::Array termsInput);
+    std::vector<double> GetTfIdf(std::vector<std::string> &documents, std::vector<std::string> &terms);
 };
