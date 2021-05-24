@@ -20,6 +20,8 @@
 Input files:
 [documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
 [terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
+
+Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 ```js
     const NodeRankFns = require('node-rank-fns');
     const assert = require('assert');
@@ -32,13 +34,14 @@ Input files:
 
     assert.doesNotThrow(testBasic, undefined, 'testTfIdf threw an exception');
 ```
-Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 <a name="BM25"></a>
 #### 2. BM25 ([Wiki](https://en.wikipedia.org/wiki/Okapi_BM25))
 Input files:
 [documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
 [terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
+
+Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 ```js
     const NodeRankFns = require('node-rank-fns');
     const assert = require('assert');
@@ -51,7 +54,6 @@ Input files:
 
     assert.doesNotThrow(testBM25, undefined, 'testBM25 threw an exception');
 ```
-Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 <a name="Benchmarks"></a>
 ## Benchmarks
