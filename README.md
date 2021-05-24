@@ -1,5 +1,5 @@
-![Rex](https://github.com/D-Andreev/node-rank-fns/blob/master/rex.png?raw=true)
-# Rex
+
+# ![Rex](https://github.com/D-Andreev/node-rank-fns/blob/master/rex.png?raw=true) Rex
 <i>A native node addon with implementations of ranking functions.</i>
 
 ---
