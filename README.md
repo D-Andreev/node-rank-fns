@@ -38,7 +38,7 @@ Input files:
         assert.deepEqual(res, [0, 0.07811157572119272]);
     }
 
-    assert.doesNotThrow(testBasic, undefined, 'testBM25 threw an exception');
+    assert.doesNotThrow(testBM25, undefined, 'testBM25 threw an exception');
 ```
 Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
