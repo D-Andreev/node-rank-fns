@@ -1,8 +1,8 @@
 "use strict";
-const addon = require('../build/Release/node-rank-fns');
-class NodeRankFns {
+const addon = require('../build/Release/recommender-system');
+class RecommenderSystem {
     constructor() {
-        this._addonInstance = new addon.NodeRankFns();
+        this._addonInstance = new addon.RecommenderSystem();
     }
     tfIdf(documents, terms) {
         return this._addonInstance.tfIdf(documents, terms);
@@ -11,4 +11,4 @@ class NodeRankFns {
         return this._addonInstance.bm25(documents, terms);
     }
 }
-module.exports = NodeRankFns;
+module.exports = RecommenderSystem;

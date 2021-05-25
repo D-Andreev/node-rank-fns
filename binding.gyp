@@ -1,8 +1,8 @@
 {
   'targets': [
     {
-      'target_name': 'node-rank-fns',
-      'sources': [ 'src/node_rank_fns.cc' ],
+      'target_name': 'recommender-system',
+      'sources': [ 'src/recommender-system.cc' ],
       'include_dirs': ["<!@(node -p \"require('node-addon-api').include\")"],
       'dependencies': ["<!(node -p \"require('node-addon-api').gyp\")"],
       'cflags!': [ '-fno-exceptions' ],

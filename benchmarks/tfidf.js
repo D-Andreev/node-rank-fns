@@ -1,4 +1,3 @@
-
 function tfIdf(docs, terms) {
     const df = getDocumentFrequency(docs, terms);
     const scores = [];

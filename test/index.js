@@ -1,9 +1,9 @@
 const assert = require('assert');
-const NodeRankFns = require('../dist/binding.js');
+const RecommenderSystem = require('../dist/binding.js');
 
 const documentsFilePath = './test/documents.txt';
 const termsFilePath = './test/terms.txt';
-const instance = new NodeRankFns();
+const instance = new RecommenderSystem();
 
 function testTfIdf() {
     const res = instance.tfIdf(documentsFilePath, termsFilePath);
