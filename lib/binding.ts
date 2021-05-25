@@ -1,13 +1,13 @@
-const addon = require('../build/Release/node-rank-fns');
+const addon = require('../build/Release/recommender-system');
 
-interface INodeRankFnsNative {
+interface IRecommenderSystemNative {
     tfIdf(documents: string[], terms: string[]): string[];
     bm25(documents: string[], terms: string[]): string[];
 }
 
-class NodeRankFns {
+class RecommenderSystem {
     constructor() {
-        this._addonInstance = new addon.NodeRankFns();
+        this._addonInstance = new addon.RecommenderSystem();
     }
 
     tfIdf(documents: string[], terms: string[]): string[] {
@@ -19,7 +19,7 @@ class NodeRankFns {
     }
 
     // private members
-    private _addonInstance: INodeRankFnsNative;
+    private _addonInstance: IRecommenderSystemNative;
 }
 
-export = NodeRankFns;
+export = RecommenderSystem;

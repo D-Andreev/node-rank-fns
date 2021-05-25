@@ -1,5 +1,5 @@
-# node-rank-fns
-<i>A native node addon with implementations of ranking functions.</i>
+# recommender-system
+<i>A native node addon with implementations of various utility functions commonly used in recommender systems.</i>
 
  * **[Install](#Install)**
  * **[TF-IDF](#TF-IDF)**
@@ -11,47 +11,47 @@
 
 <a name="Install"></a>
 ## Install 
-- `npm i node-rank-fns`
+- `npm i recommender-system`
 
 ## Examples 
 
 <a name="TF-IDF"></a>
 #### 1. TF-IDF ([Wiki](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Example_of_tf%E2%80%93idf))
 Input files:
-[documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
-[terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
+[documents.txt](https://github.com/D-Andreev/recommender-system/blob/master/test/documents.txt)
+[terms.txt](https://github.com/D-Andreev/recommender-system/blob/master/test/terms.txt)
 ```js
-    const NodeRankFns = require('node-rank-fns');
+    const RecommenderSystem = require('recommender-system');
     const assert = require('assert');
 
     function testTfIdf() {
-        const instance = new NodeRankFns();
+        const instance = new RecommenderSystem();
         const res = instance.tfIdf('./documents.txt', './terms.txt');
         assert.deepEqual(res, [0, 0.12901285528456335]);
     }
 
     assert.doesNotThrow(testBasic, undefined, 'testTfIdf threw an exception');
 ```
-Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
+Run example [here](https://github.com/D-Andreev/recommender-system/blob/master/test/index.js)
 
 <a name="BM25"></a>
 #### 2. BM25 ([Wiki](https://en.wikipedia.org/wiki/Okapi_BM25))
 Input files:
-[documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
-[terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
+[documents.txt](https://github.com/D-Andreev/recommender-system/blob/master/test/documents.txt)
+[terms.txt](https://github.com/D-Andreev/recommender-system/blob/master/test/terms.txt)
 ```js
-    const NodeRankFns = require('node-rank-fns');
+    const RecommenderSystem = require('recommender-system');
     const assert = require('assert');
 
     function testBM25() {
-        const instance = new NodeRankFns();
+        const instance = new RecommenderSystem();
         const res = instance.bm25('./documents.txt', './terms.txt');
         assert.deepEqual(res, [0, 0.07811157572119272]);
     }
 
     assert.doesNotThrow(testBM25, undefined, 'testBM25 threw an exception');
 ```
-Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
+Run example [here](https://github.com/D-Andreev/recommender-system/blob/master/test/index.js)
 
 <a name="Benchmarks"></a>
 ## Benchmarks
@@ -70,7 +70,7 @@ Pull requests are welcome.
 
 <a name="Changelog"></a>
 ### Changelog
-For complete changelog [click here](https://github.com/D-Andreev/node-rank-fns/blob/master/CHANGELOG.md).
+For complete changelog [click here](https://github.com/D-Andreev/recommender-system/blob/master/CHANGELOG.md).
 
 <a name="License"></a>
 ### License
