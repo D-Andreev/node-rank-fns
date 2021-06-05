@@ -1,4 +1,4 @@
-#include "recommender_system.h"
+#include "node_rank_fns.h"
 #include "ranking_fns/RankingFns.h"
 #include "utils/Utils.h"
 #include <iostream>
@@ -7,7 +7,7 @@
 #include "workers/TfIdfWorker.h"
 #include "workers/BM25Worker.h"
 
-RecommenderSystem::RecommenderSystem(const Napi::CallbackInfo& info) : ObjectWrap(info) {
+NodeRankFns::NodeRankFns(const Napi::CallbackInfo& info) : ObjectWrap(info) {
     Napi::Env env = info.Env();
     this->rankingFns = new RankingFns();
     this->utils = new Utils();
@@ -20,7 +20,7 @@ RecommenderSystem::RecommenderSystem(const Napi::CallbackInfo& info) : ObjectWra
  * O(N * M) ST (where N is the number of documents and M is the number of terms)
  * O(N) T (where N is the number of documents
  */
-Napi::Value RecommenderSystem::TfIdf(const Napi::CallbackInfo& info) {
+Napi::Value NodeRankFns::TfIdf(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
     if (info.Length() < 2) {
         Napi::TypeError::New(env, "Wrong number of arguments")
@@ -58,7 +58,7 @@ Napi::Value RecommenderSystem::TfIdf(const Napi::CallbackInfo& info) {
  * O(N * M) ST (where N is the number of documents and M is the number of terms)
  * O(N) T (where N is the number of documents
  */
-Napi::Value RecommenderSystem::BM25(const Napi::CallbackInfo& info) {
+Napi::Value NodeRankFns::BM25(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
     if (info.Length() < 2) {
         Napi::TypeError::New(env, "Wrong number of arguments")
@@ -90,16 +90,16 @@ Napi::Value RecommenderSystem::BM25(const Napi::CallbackInfo& info) {
     return env.Null();
 }
 
-Napi::Function RecommenderSystem::GetClass(Napi::Env env) {
-    return DefineClass(env, "RecommenderSystem", {
-            RecommenderSystem::InstanceMethod("tfIdf", &RecommenderSystem::TfIdf),
-            RecommenderSystem::InstanceMethod("bm25", &RecommenderSystem::BM25),
+Napi::Function NodeRankFns::GetClass(Napi::Env env) {
+    return DefineClass(env, "NodeRankFns", {
+            NodeRankFns::InstanceMethod("tfIdf", &NodeRankFns::TfIdf),
+            NodeRankFns::InstanceMethod("bm25", &NodeRankFns::BM25),
     });
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-    Napi::String name = Napi::String::New(env, "RecommenderSystem");
-    exports.Set(name, RecommenderSystem::GetClass(env));
+    Napi::String name = Napi::String::New(env, "NodeRankFns");
+    exports.Set(name, NodeRankFns::GetClass(env));
     return exports;
 }
 

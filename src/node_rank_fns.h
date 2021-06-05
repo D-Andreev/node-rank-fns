@@ -4,10 +4,10 @@
 #include "ranking_fns/RankingFns.h"
 #include "utils/Utils.h"
 
-class RecommenderSystem : public Napi::ObjectWrap<RecommenderSystem>
+class NodeRankFns : public Napi::ObjectWrap<NodeRankFns>
 {
 public:
-    RecommenderSystem(const Napi::CallbackInfo&);
+    NodeRankFns(const Napi::CallbackInfo&);
     static Napi::Function GetClass(Napi::Env);
 
     Napi::Value TfIdf(const Napi::CallbackInfo&);

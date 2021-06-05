@@ -1,5 +1,5 @@
-# recommender-system
-<i>A native node addon with implementations of various utility functions commonly used in recommender systems.</i>
+# node-rank-fns
+<i>A native node addon with implementations of ranking functions.</i>
 
  * **[Install](#Install)**
  * **[TF-IDF](#TF-IDF)**
@@ -11,41 +11,41 @@
 
 <a name="Install"></a>
 ## Install 
-- `npm i recommender-system`
+- `npm i node-rank-fns`
 
 ## Examples 
 
 <a name="TF-IDF"></a>
 #### 1. TF-IDF ([Wiki](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Example_of_tf%E2%80%93idf))
 Input files:
-[documents.txt](https://github.com/D-Andreev/recommender-system/blob/master/test/documents.txt)
-[terms.txt](https://github.com/D-Andreev/recommender-system/blob/master/test/terms.txt)
+[documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
+[terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
 ```js
-    const RecommenderSystem = require('recommender-system');
+    const NodeRankFns = require('node-rank-fns');
     const assert = require('assert');
+    const rankFns = new NodeRankFns();
 
-    const instance = new RecommenderSystem();
-    instance.tfIdf('./documents.txt', './terms.txt', (err, res) => {
+    rankFns.tfIdf('./documents.txt', './terms.txt', (err, res) => {
         assert.deepEqual(res, [0, 0.12901285528456335]);
     });
 ```
-Run example [here](https://github.com/D-Andreev/recommender-system/blob/master/test/index.js)
+Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 <a name="BM25"></a>
 #### 2. BM25 ([Wiki](https://en.wikipedia.org/wiki/Okapi_BM25))
 Input files:
-[documents.txt](https://github.com/D-Andreev/recommender-system/blob/master/test/documents.txt)
-[terms.txt](https://github.com/D-Andreev/recommender-system/blob/master/test/terms.txt)
+[documents.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/documents.txt)
+[terms.txt](https://github.com/D-Andreev/node-rank-fns/blob/master/test/terms.txt)
 ```js
-    const RecommenderSystem = require('recommender-system');
+    const NodeRankFns = require('node-rank-fns');
     const assert = require('assert');
+    const rankFns = new NodeRankFns();
 
-    const instance = new RecommenderSystem();
-    instance.bm25('./documents.txt', './terms.txt', (err, res) => {
+    rankFns.bm25('./documents.txt', './terms.txt', (err, res) => {
         assert.deepEqual(res, [0, 0.07811157572119272]);
     });
 ```
-Run example [here](https://github.com/D-Andreev/recommender-system/blob/master/test/index.js)
+Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
 <a name="Benchmarks"></a>
 ## Benchmarks
