@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.9)
 cmake_policy(SET CMP0042 NEW)
 set (CMAKE_CXX_STANDARD 11)
 
@@ -14,7 +14,7 @@ FetchContent_MakeAvailable(googletest)
 project (recommender-system)
 include_directories(${CMAKE_JS_INC})
 file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp *.cc)
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC} src/ranking_fns/RankingFns.cc src/ranking_fns/RankingFns.h src/utils/Utils.cpp src/utils/Utils.h src/Abc.cpp src/Abc.h)
+add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC} src/ranking_fns/RankingFns.cc src/ranking_fns/RankingFns.h src/utils/Utils.cpp src/utils/Utils.h)
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB})
 
@@ -35,6 +35,7 @@ enable_testing()
 add_executable(
         ranking_fns_test
         test/ranking_fns_test.cc
+        src/ranking_fns/RankingFns.cc
 )
 target_link_libraries(
         ranking_fns_test
