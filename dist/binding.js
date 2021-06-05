@@ -4,11 +4,11 @@ class RecommenderSystem {
     constructor() {
         this._addonInstance = new addon.RecommenderSystem();
     }
-    tfIdf(documents, terms) {
-        return this._addonInstance.tfIdf(documents, terms);
+    tfIdf(documents, terms, callback) {
+        return this._addonInstance.tfIdf(documents, terms, callback);
     }
-    bm25(documents, terms) {
-        return this._addonInstance.bm25(documents, terms);
+    bm25(documents, terms, callback) {
+        return this._addonInstance.bm25(documents, terms, callback);
     }
 }
 module.exports = RecommenderSystem;

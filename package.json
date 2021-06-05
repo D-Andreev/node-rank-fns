@@ -14,7 +14,7 @@
         "upload": "prebuild --runtime napi --upload ${GITHUB_TOKEN}",
         "pretest": "tsc",
         "test": "npm run rebuild && cd build && ctest",
-        "test:feature": "node --napi-modules test/index.js",
+        "test:feature": "npm run rebuild && node --napi-modules test/index.js",
         "benchmarks": "node --napi-modules benchmarks/index.js"
     },
     "author": "Dimitar Andreev",
@@ -22,7 +22,7 @@
     "description": "A native node addon with implementations of various utility functions commonly used in recommender systems.",
     "dependencies": {
         "bindings": "^1.5.0",
-        "node-addon-api": "^3.2.0",
+        "node-addon-api": "^1.1.0",
         "prebuild-install": "^6.1.2"
     },
     "devDependencies": {
