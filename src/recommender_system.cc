@@ -4,6 +4,8 @@
 #include <iostream>
 #include "vector"
 #include "string"
+#include "workers/TfIdfWorker.h"
+#include "workers/BM25Worker.h"
 
 RecommenderSystem::RecommenderSystem(const Napi::CallbackInfo& info) : ObjectWrap(info) {
     Napi::Env env = info.Env();
@@ -35,14 +37,18 @@ Napi::Value RecommenderSystem::TfIdf(const Napi::CallbackInfo& info) {
                 .ThrowAsJavaScriptException();
         return env.Null();
     }
-
+    if (!info[2].IsFunction()) {
+        Napi::TypeError::New(env, "callback not valid")
+                .ThrowAsJavaScriptException();
+        return env.Null();
+    }
     auto documents = this->utils->ParseInputFile(info[0].As<Napi::String>().Utf8Value());
     auto terms = this->utils->ParseInputFile(info[1].As<Napi::String>().Utf8Value());
 
-    auto scores = this->rankingFns->GetTfIdf(documents, terms);
-    auto result = this->utils->VectorToNapiArray(env, scores);
-
-    return reinterpret_cast<Napi::Value &&>(result);
+    Napi::Function callback = info[2].As<Napi::Function>();
+    TfIdfWorker* asyncWorker = new TfIdfWorker(callback, this->rankingFns, this->utils, documents, terms);
+    asyncWorker->Queue();
+    return env.Null();
 }
 
 /**
@@ -69,14 +75,19 @@ Napi::Value RecommenderSystem::BM25(const Napi::CallbackInfo& info) {
                 .ThrowAsJavaScriptException();
         return env.Null();
     }
+    if (!info[2].IsFunction()) {
+        Napi::TypeError::New(env, "callback not valid")
+                .ThrowAsJavaScriptException();
+        return env.Null();
+    }
 
     auto documents = this->utils->ParseInputFile(info[0].As<Napi::String>().Utf8Value());
     auto terms = this->utils->ParseInputFile(info[1].As<Napi::String>().Utf8Value());
 
-    auto scores = this->rankingFns->GetBM25(documents, terms);
-    auto result = this->utils->VectorToNapiArray(env, scores);
-
-    return reinterpret_cast<Napi::Value &&>(result);
+    Napi::Function callback = info[2].As<Napi::Function>();
+    BM25Worker* asyncWorker = new BM25Worker(callback, this->rankingFns, this->utils, documents, terms);
+    asyncWorker->Queue();
+    return env.Null();
 }
 
 Napi::Function RecommenderSystem::GetClass(Napi::Env env) {

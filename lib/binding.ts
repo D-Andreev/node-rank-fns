@@ -1,8 +1,8 @@
 const addon = require('../build/Release/recommender-system');
 
 interface IRecommenderSystemNative {
-    tfIdf(documents: string[], terms: string[]): string[];
-    bm25(documents: string[], terms: string[]): string[];
+    tfIdf(documents: string[], terms: string[], callback: Function): string[];
+    bm25(documents: string[], terms: string[], callback: Function): string[];
 }
 
 class RecommenderSystem {
@@ -10,12 +10,12 @@ class RecommenderSystem {
         this._addonInstance = new addon.RecommenderSystem();
     }
 
-    tfIdf(documents: string[], terms: string[]): string[] {
-        return this._addonInstance.tfIdf(documents, terms);
+    tfIdf(documents: string[], terms: string[], callback: Function): string[] {
+        return this._addonInstance.tfIdf(documents, terms, callback);
     }
 
-    bm25(documents: string[], terms: string[]): string[] {
-        return this._addonInstance.bm25(documents, terms);
+    bm25(documents: string[], terms: string[], callback: Function): string[] {
+        return this._addonInstance.bm25(documents, terms, callback);
     }
 
     // private members
