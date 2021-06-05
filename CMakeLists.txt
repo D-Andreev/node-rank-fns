@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.14)
 cmake_policy(SET CMP0042 NEW)
 set (CMAKE_CXX_STANDARD 11)
 
@@ -27,10 +27,19 @@ string(REGEX REPLACE "[\r\n\"]" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${NODE_ADDON_API_DIR})
 
-
-add_subdirectory(test)
 # define NPI_VERSION
 add_compile_definitions(NAPI_VERSION=3)
 add_definitions(-DNAPI_VERSION=3)
 
 enable_testing()
+add_executable(
+        ranking_fns_test
+        test/ranking_fns_test.cc
+)
+target_link_libraries(
+        ranking_fns_test
+        gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(ranking_fns_test)

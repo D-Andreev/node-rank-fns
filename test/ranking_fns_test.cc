@@ -6,7 +6,9 @@
 TEST(RankingFnsTest, GetsTfIdfScores) {
     std::vector<std::string> documents = { "this is a a sample", "this is another another example example example" };
     std::vector<std::string> terms = { "example" };
-    int res = Abc::calc();
+    auto *abc = new Abc();
+
+    int res = abc->calc();
     EXPECT_EQ(res, 1);
     //auto *rankingFns = new RankingFns();
 
