@@ -2,6 +2,15 @@ cmake_minimum_required(VERSION 3.9)
 cmake_policy(SET CMP0042 NEW)
 set (CMAKE_CXX_STANDARD 11)
 
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 project (recommender-system)
 include_directories(${CMAKE_JS_INC})
 file(GLOB SOURCE_FILES "src/recommender_system.cc")
@@ -21,3 +30,17 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${NODE_ADDON_API_DIR})
 # define NPI_VERSION
 add_compile_definitions(NAPI_VERSION=3)
 add_definitions(-DNAPI_VERSION=3)
+
+enable_testing()
+add_executable(
+        ranking_fns_test
+        test/ranking_fns_test.cc
+        src/ranking_fns/RankingFns.cc
+)
+target_link_libraries(
+        ranking_fns_test
+        gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(ranking_fns_test)

@@ -13,7 +13,8 @@
         "prebuild": "prebuild --runtime napi --all --strip --verbose",
         "upload": "prebuild --runtime napi --upload ${GITHUB_TOKEN}",
         "pretest": "tsc",
-        "test": "node --napi-modules test/index.js",
+        "test": "npm run rebuild && cd build && ctest",
+        "test:feature": "node --napi-modules test/index.js",
         "benchmarks": "node --napi-modules benchmarks/index.js"
     },
     "author": "Dimitar Andreev",
