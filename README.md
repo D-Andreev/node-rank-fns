@@ -24,13 +24,10 @@ Input files:
     const RecommenderSystem = require('recommender-system');
     const assert = require('assert');
 
-    function testTfIdf() {
-        const instance = new RecommenderSystem();
-        const res = instance.tfIdf('./documents.txt', './terms.txt');
+    const instance = new RecommenderSystem();
+    instance.tfIdf('./documents.txt', './terms.txt', (err, res) => {
         assert.deepEqual(res, [0, 0.12901285528456335]);
-    }
-
-    assert.doesNotThrow(testBasic, undefined, 'testTfIdf threw an exception');
+    });
 ```
 Run example [here](https://github.com/D-Andreev/recommender-system/blob/master/test/index.js)
 
@@ -43,13 +40,10 @@ Input files:
     const RecommenderSystem = require('recommender-system');
     const assert = require('assert');
 
-    function testBM25() {
-        const instance = new RecommenderSystem();
-        const res = instance.bm25('./documents.txt', './terms.txt');
+    const instance = new RecommenderSystem();
+    instance.bm25('./documents.txt', './terms.txt', (err, res) => {
         assert.deepEqual(res, [0, 0.07811157572119272]);
-    }
-
-    assert.doesNotThrow(testBM25, undefined, 'testBM25 threw an exception');
+    });
 ```
 Run example [here](https://github.com/D-Andreev/recommender-system/blob/master/test/index.js)
 
