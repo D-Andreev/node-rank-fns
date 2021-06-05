@@ -1,6 +1,6 @@
 {
     "main": "lib/binding.js",
-    "name": "recommender-system",
+    "name": "node-rank-fns",
     "version": "1.0.0",
     "binary": {
         "napi_versions": [
@@ -19,7 +19,7 @@
     },
     "author": "Dimitar Andreev",
     "license": "MIT",
-    "description": "A native node addon with implementations of various utility functions commonly used in recommender systems.",
+    "description": "A native node addon with implementations of ranking functions.",
     "dependencies": {
         "bindings": "^1.5.0",
         "node-addon-api": "^1.1.0",
@@ -31,5 +31,5 @@
         "fastbench": "^1.0.1",
         "typescript": "^3.9.7"
     },
-    "repository": "https://github.com/D-Andreev/recommender-system.git"
+    "repository": "https://github.com/D-Andreev/node-rank-fns.git"
 }

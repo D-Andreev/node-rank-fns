@@ -11,9 +11,9 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-project (recommender-system)
+project (node-rank-fns)
 include_directories(${CMAKE_JS_INC})
-file(GLOB SOURCE_FILES "src/recommender_system.cc")
+file(GLOB SOURCE_FILES "src/node_rank_fns.cc")
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC} src/ranking_fns/RankingFns.cc src/ranking_fns/RankingFns.h src/utils/Utils.cpp src/utils/Utils.h src/workers/TfIdfWorker.cpp src/workers/TfIdfWorker.h src/workers/BM25Worker.cpp src/workers/BM25Worker.h)
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB})
