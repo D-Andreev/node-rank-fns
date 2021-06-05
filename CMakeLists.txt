@@ -13,7 +13,7 @@ FetchContent_MakeAvailable(googletest)
 
 project (recommender-system)
 include_directories(${CMAKE_JS_INC})
-file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp *.cc)
+file(GLOB SOURCE_FILES "src/recommender_system.cc")
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${CMAKE_JS_SRC} src/ranking_fns/RankingFns.cc src/ranking_fns/RankingFns.h src/utils/Utils.cpp src/utils/Utils.h)
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB})
