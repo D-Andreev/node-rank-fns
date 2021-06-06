@@ -21,11 +21,10 @@ function testBM25(cb) {
 }
 
 function testBM25WithOptions(cb) {
-    const rankFns = new NodeRankFns({k: 0.5, b: 0.5});
+    const rankFns = new NodeRankFns({k: 2, b: 0.5});
     rankFns.bm25(documentsFilePath, termsFilePath, (err, res) => {
         assert.equal(err, null);
-        console.log({res});
-        assert.deepEqual(res, [0, 0.12403771612145024]);
+        assert.deepEqual(res, [0, 0.04487832504164857]);
         cb();
     });
 }

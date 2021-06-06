@@ -50,9 +50,9 @@ Input files:
     // As k increases the impact of a higher TF to the score would be lower.
     // b is used in BM25 to control the contribution of document length. (Must be between `0` and `1`). (Default: `1`)
     // as b increases towards `1` the impact of document length is increased. `0` means that document length is not taken into account.
-    const rankFns = new NodeRankFns({k: 0.5, b: 0.5});
+    const rankFns = new NodeRankFns({k: 2, b: 0.5});
     rankFns.bm25('./documents.txt', './terms.txt', (err, res) => {
-        assert.deepEqual(res, [0, 0.12403771612145024]);
+        assert.deepEqual(res, [0, 0.04487832504164857]);
     });
 ```
 Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)

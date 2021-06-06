@@ -11,7 +11,7 @@ interface IOptions {
 }
 
 class NodeRankFns {
-    constructor(options: IOptions) {
+    constructor(options?: IOptions) {
         this._addonInstance = new addon.NodeRankFns(options);
     }
 
