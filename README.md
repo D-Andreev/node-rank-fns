@@ -78,7 +78,7 @@ Pull requests are welcome.
 
 <a name="Changelog"></a>
 ### Changelog
-For complete changelog [click here](https://github.com/D-Andreev/recommender-system/blob/master/CHANGELOG.md).
+For complete changelog [click here](https://github.com/D-Andreev/node-rank-fns/blob/master/CHANGELOG.md).
 
 <a name="License"></a>
 ### License
