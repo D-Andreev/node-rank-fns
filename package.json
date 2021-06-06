@@ -10,7 +10,7 @@
     "scripts": {
         "install": "prebuild-install --runtime napi || cmake-js build",
         "rebuild": "cmake-js build",
-        "prebuild": "prebuild --runtime napi --all --strip --verbose",
+        "prebuild": "prebuild --backend cmake-js --runtime napi --all --strip --verbose",
         "upload": "prebuild --runtime napi --upload ${GITHUB_TOKEN}",
         "pretest": "tsc",
         "test": "npm run rebuild && cd build && ctest",
