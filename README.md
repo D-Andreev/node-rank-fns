@@ -74,9 +74,7 @@ Pull requests are welcome.
 
 <a name="TODO"></a>
 ### TODO
-- Make functions with promises instead of callbacks.
-- Move k and b as parameters of addon constructor
-- 
+- Make functions with promises instead of callbacks. 
 
 <a name="Changelog"></a>
 ### Changelog
