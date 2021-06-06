@@ -1,5 +1,5 @@
 {
-    "main": "lib/binding.js",
+    "main": "dist/binding.js",
     "name": "node-rank-fns",
     "version": "1.0.0",
     "binary": {
