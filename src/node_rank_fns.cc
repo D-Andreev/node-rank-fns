@@ -9,7 +9,20 @@
 
 NodeRankFns::NodeRankFns(const Napi::CallbackInfo& info) : ObjectWrap(info) {
     Napi::Env env = info.Env();
-    this->rankingFns = new RankingFns();
+    double k, b;
+    Napi::Object options = info[0].As<Napi::Object>();
+    k = options.Get("k").As<Napi::Number>().DoubleValue();
+    if (k <= 0) {
+        Napi::TypeError::New(env, "k parameter must be larger than 0")
+                .ThrowAsJavaScriptException();
+    }
+    b = options.Get("b").As<Napi::Number>().DoubleValue();
+    if (b < 0 || b > 1) {
+        Napi::TypeError::New(env, "b parameter must be between 0 and 1")
+                .ThrowAsJavaScriptException();
+    }
+
+    this->rankingFns = new RankingFns(k, b);
     this->utils = new Utils();
 }
 

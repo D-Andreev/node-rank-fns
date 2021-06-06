@@ -44,6 +44,16 @@ Input files:
     rankFns.bm25('./documents.txt', './terms.txt', (err, res) => {
         assert.deepEqual(res, [0, 0.07811157572119272]);
     });
+
+    // Pass paramers k and b for BM25
+    // k is used in BM25 to control the contribution of term frequency. (Term saturation) (Default: `1`)
+    // As k increases the impact of a higher TF to the score would be lower.
+    // b is used in BM25 to control the contribution of document length. (Must be between `0` and `1`). (Default: `1`)
+    // as b increases towards `1` the impact of document length is increased. `0` means that document length is not taken into account.
+    const rankFns = new NodeRankFns({k: 0.5, b: 0.5});
+    rankFns.bm25('./documents.txt', './terms.txt', (err, res) => {
+        assert.deepEqual(res, [0, 0.12403771612145024]);
+    });
 ```
 Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/index.js)
 
@@ -61,6 +71,12 @@ Run example [here](https://github.com/D-Andreev/node-rank-fns/blob/master/test/i
 <a name="Contributing"></a>
 ### Contributing
 Pull requests are welcome.
+
+<a name="TODO"></a>
+### TODO
+- Make functions with promises instead of callbacks.
+- Move k and b as parameters of addon constructor
+- 
 
 <a name="Changelog"></a>
 ### Changelog
