@@ -1,7 +1,7 @@
 {
     "main": "dist/binding.js",
     "name": "node-rank-fns",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "binary": {
         "napi_versions": [
             3
