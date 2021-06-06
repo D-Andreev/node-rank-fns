@@ -5,9 +5,14 @@ interface INodeRankFnsNative {
     bm25(documents: string[], terms: string[], callback: Function): string[];
 }
 
+interface IOptions {
+    k?: number;
+    b?: number;
+}
+
 class NodeRankFns {
-    constructor() {
-        this._addonInstance = new addon.NodeRankFns();
+    constructor(options?: IOptions) {
+        this._addonInstance = new addon.NodeRankFns(options);
     }
 
     tfIdf(documents: string[], terms: string[], callback: Function): string[] {

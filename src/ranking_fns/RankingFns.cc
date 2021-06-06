@@ -3,6 +3,11 @@
 #include "math.h"
 #include "RankingFns.h"
 
+RankingFns::RankingFns(double k, double b) {
+    this->k = k;
+    this->b = b;
+}
+
 std::vector<double> RankingFns::GetTfIdf(std::vector<std::string> &documents, std::vector<std::string> &terms) {
     double df = RankingFns::GetDocumentFrequency(documents, terms);
     std::vector<double> scores;
@@ -80,14 +85,12 @@ std::vector<double> RankingFns::GetBM25(std::vector<std::string> &documents, std
         documentLengthSum += document.size();
     }
     double averageDocumentLength = (double)documentLengthSum / n;
-    double k = 1;
-    double b = 0.5;
     for (const auto& doc : documents) {
         double documentLength = doc.size();
         auto words = this->SplitString(doc);
         double tf = this->GetTermFrequency(words, terms);
         // Fancy tf accounts for term saturation and document length.
-        double fancyTf = tf / (tf + k * (1 - b + b * documentLength / averageDocumentLength));
+        double fancyTf = tf / (tf + this->k * (1 - this->b + this->b * documentLength / averageDocumentLength));
         // Fancy (not so fancy) idf considers less a term if it's in most of the documents.
         double fancyIdf = log10(1 + (n - df + .5) / (df + .5));
         scores.push_back(abs(fancyTf * fancyIdf));

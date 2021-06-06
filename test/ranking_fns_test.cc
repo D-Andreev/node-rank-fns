@@ -5,7 +5,7 @@
 TEST(RankingFnsTest, GetsTfIdfScores) {
     std::vector<std::string> documents = { "this is a a sample", "this is another another example example example" };
     std::vector<std::string> terms = { "example" };
-    auto *rankingFns = new RankingFns();
+    auto *rankingFns = new RankingFns(1, 0.5);
 
     auto result = rankingFns->GetTfIdf(documents, terms);
 
@@ -18,7 +18,7 @@ TEST(RankingFnsTest, GetsTfIdfScores) {
 TEST(RankingFnsTest, GetBM25Scores) {
     std::vector<std::string> documents = { "this is a a sample", "this is another another example example example" };
     std::vector<std::string> terms = { "example" };
-    auto *rankingFns = new RankingFns();
+    auto *rankingFns = new RankingFns(1, 0.5);
 
     auto result = rankingFns->GetBM25(documents, terms);
 

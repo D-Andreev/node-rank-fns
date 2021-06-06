@@ -1,8 +1,8 @@
 "use strict";
 const addon = require('../build/Release/node-rank-fns');
 class NodeRankFns {
-    constructor() {
-        this._addonInstance = new addon.NodeRankFns();
+    constructor(options) {
+        this._addonInstance = new addon.NodeRankFns(options);
     }
     tfIdf(documents, terms, callback) {
         return this._addonInstance.tfIdf(documents, terms, callback);
