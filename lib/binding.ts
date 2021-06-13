@@ -1,8 +1,8 @@
 const addon = require('../build/Release/node-rank-fns');
 
 interface INodeRankFnsNative {
-    tfIdf(documents: string[], terms: string[], callback: Function): string[];
-    bm25(documents: string[], terms: string[], callback: Function): string[];
+    tfIdf(documents: string, terms: string, callback: Function): number[];
+    bm25(documents: string, terms: string, callback: Function): number[];
 }
 
 interface IOptions {
@@ -15,11 +15,11 @@ class NodeRankFns {
         this._addonInstance = new addon.NodeRankFns(options);
     }
 
-    tfIdf(documents: string[], terms: string[], callback: Function): string[] {
+    tfIdf(documents: string, terms: string, callback: Function): number[] {
         return this._addonInstance.tfIdf(documents, terms, callback);
     }
 
-    bm25(documents: string[], terms: string[], callback: Function): string[] {
+    bm25(documents: string, terms: string, callback: Function): number[] {
         return this._addonInstance.bm25(documents, terms, callback);
     }
 
