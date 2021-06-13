@@ -4,8 +4,8 @@ interface IOptions {
 }
 declare class NodeRankFns {
     constructor(options?: IOptions);
-    tfIdf(documents: string[], terms: string[], callback: Function): string[];
-    bm25(documents: string[], terms: string[], callback: Function): string[];
+    tfIdf(documents: string, terms: string, callback: Function): number[];
+    bm25(documents: string, terms: string, callback: Function): number[];
     private _addonInstance;
 }
 export = NodeRankFns;
